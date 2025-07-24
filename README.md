@@ -1,28 +1,31 @@
 # 🧠 Full Stack Order Summary App (Node.js + React + SQLite)
 
-This is a full-stack web application for managing and viewing orders, built using **Node.js**, **Express**, **SQLite**, and **React** with **TypeScript**. It supports searching, pagination, and viewing summary data — ideal for demonstrating clean architecture, full-stack integration, and testability.
+This is a full-stack web application for managing and viewing orders, built using **Node.js**, **Express**, **SQLite**, and **React** with **TypeScript** and **MUI**. It supports searching, pagination, and viewing summary data — ideal for demonstrating clean architecture, full-stack integration, and testability.
 
 ---
 
 ## 📁 Project Structure
 
+```
 project-root/
 ├── backend/ # Node.js + Express API
 │ ├── src/
+│ │ ├── __tests__/
 │ │ ├── controllers/
 │ │ ├── db/
 │ │ ├── routes/
 │ │ ├── services/
-│ │ ├── scripts/ # DB seed and print scripts
-│ │ ├── tests/
-│ │ └── index.ts # App entry point
+│ │ ├── scripts/ # DB migrate and seed
+│ │ ├── utils/
+│ │ ├── app.ts
+│ │ └── server.ts # App entry point
 │ └── package.json
 ├── frontend/ # React + TypeScript + MUI
 │ ├── src/
 │ └── package.json
 ├── README.md # ← You are here
 └── .env # Environment variables
-
+```
 
 ---
 
@@ -91,27 +94,27 @@ cd ../frontend
 npm run dev
 ```
 
-__By default, the frontend runs on http://localhost:5173 and the backend on http://localhost:3001.__
+_By default, the frontend runs on http://localhost:5173 and the backend on http://localhost:3001._
 
 
 .
 
-🧪 Running Tests
+## 🧪 Running Tests
 ```bash
 cd backend
 npm test
 ```
-__This will run unit tests using Jest with an in-memory SQLite database.__
+_This will run unit tests using Jest with an in-memory SQLite database._
 
-🗄️ Seeding the Database
-__To insert dummy data into the SQLite database:__
+## 🗄️ Seeding the Database
+_To insert dummy data into the SQLite database:_
 ```bash
 cd backend
 npm run seed
 ```
-__This will populate the orders table with sample data using scripts in src/scripts/.__
+_This will populate the orders table with sample data using scripts in src/scripts/._
 
-🚦 API Endpoints
+## 🚦 API Endpoints
 GET /api/orders
 Query Parameters:
 
@@ -133,14 +136,14 @@ Response:
 ]
 ```
 
-📊 Frontend Features
+## 📊 Frontend Features
 🧠 View list of orders in a paginated table
 
 🔍 Search/filter by product name
 
 🧾 Summary of total quantity and amount
 
-🧼 Scripts
+## 🧼 Scripts
 In /backend/package.json:
 
 Command	Description
@@ -148,7 +151,7 @@ npm run dev	Start API server in dev mode and runs migrations and seeder
 npm run seed	Run DB seed script (optional for testing)
 npm test	Run backend tests (optional for testing)
 
-📌 Notes
+## 📌 Notes
 SQLite DB file is saved in /backend/src/db/database.sqlite
 
 In test mode, SQLite runs in-memory (:memory:)
@@ -157,5 +160,5 @@ Logs are printed using winston with timestamps
 
 Errors and queries are fully logged for easier debugging using [winston](https://www.npmjs.com/package/winston) - used for production ready setup
 
-📣 License
+## 📣 License
 MIT © Nathanielle Romero
