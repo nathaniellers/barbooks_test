@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "noEmit": true
+  },
+  "include": [
+    "src/__tests__/**/*.test.ts",
+    "src/__tests__/**/*.test.tsx",
+    "src/__tests__/**/*.spec.ts",
+    "src/__tests__/**/*.spec.tsx",
+    "vitest.setup.ts"
+  ]
+}
