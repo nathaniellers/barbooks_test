@@ -28,12 +28,6 @@ function App() {
 
       <Summary loading={loading} error={error} data={data} />
 
-      <Box display="flex" justifyContent="flex-end" mb={3}>
-        <Button variant="contained" onClick={() => setOpenForm(true)}>
-          Add New Order
-        </Button>
-      </Box>
-
       <OrderForm
         open={openForm}
         onClose={() => setOpenForm(false)}
