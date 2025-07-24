@@ -42,7 +42,7 @@ project-root/
 - **React** + **TypeScript**
 - **Material UI (MUI)**
 - **Axios** for API communication
-- **React Router** for routing
+- **React Router** for routing (for future designs)
 
 ---
 
@@ -52,7 +52,7 @@ project-root/
 
 ```bash
 git clone https://github.com/nathaniellers/barbooks_test.git
-cd order-summary-app
+cd barbooks_test
 ```
 
 2. Install Dependencies
@@ -70,16 +70,17 @@ npm install
 3. Set Up Environment
 In the root folder, create a .env file:
 
-env
+backend/.env
 ```bash
+PORT=3000
+DB_PATH=./src/db/database.sqlite
 NODE_ENV=development
-PORT=3001
+FRONTEND_URL=http://localhost:5175
 ```
-For test environment (optional):
 
-env
+frontend/.env
 ```bash
-NODE_ENV=test
+VITE_API_BASE_URL=http://localhost:3000
 ```
 4. Run the App
 Start Backend (API Server)
@@ -94,10 +95,8 @@ cd ../frontend
 npm run dev
 ```
 
-_By default, the frontend runs on http://localhost:5173 and the backend on http://localhost:3001._
+_By default, the frontend runs on http://localhost:5173 and the backend on http://localhost:3000._
 
-
-.
 
 ## 🧪 Running Tests
 ```bash
@@ -106,12 +105,8 @@ npm test
 ```
 _This will run unit tests using Jest with an in-memory SQLite database._
 
-## 🗄️ Seeding the Database
-_To insert dummy data into the SQLite database:_
-```bash
-cd backend
-npm run seed
-```
+## 🗄️ Migrating & Seeding the Database
+_By default the system is already migrating tables and inserting dummy data into the SQLite database (for test purposes)_
 _This will populate the orders table with sample data using scripts in src/scripts/._
 
 ## 🚦 API Endpoints
@@ -120,7 +115,7 @@ Query Parameters:
 
 product: Filter by product name
 
-limit: Limit number of results (default: 10)
+limit: Limit number of results (default: 5)
 
 offset: Offset for pagination
 
@@ -129,9 +124,27 @@ Response:
 [
   {
     "id": 1,
-    "product": "Laptop",
-    "quantity": 3,
-    "price": 1000
+    "product": "Apple",
+    "qty": 10,
+    "price": 2.5
+  },
+  {
+    "id": 3,
+    "product": "Apple",
+    "qty": 7,
+    "price": 2.7
+  },
+  {
+    "id": 2,
+    "product": "Banana",
+    "qty": 5,
+    "price": 1
+  },
+  {
+    "id": 4,
+    "product": "Orange",
+    "qty": 8,
+    "price": 3
   }
 ]
 ```
@@ -156,9 +169,9 @@ SQLite DB file is saved in /backend/src/db/database.sqlite
 
 In test mode, SQLite runs in-memory (:memory:)
 
-Logs are printed using winston with timestamps
+Errors and queries are fully logged for easier debugging
 
-Errors and queries are fully logged for easier debugging using [winston](https://www.npmjs.com/package/winston) - used for production ready setup
+Logs are printed using [winston](https://www.npmjs.com/package/winston) with timestamps
 
 ## 📣 License
 MIT © Nathanielle Romero
